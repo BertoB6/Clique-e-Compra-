@@ -1,713 +1,308 @@
+<!-- index.html - Página inicial com cards que direcionam para as páginas específicas -->
 <!DOCTYPE html>
-<html lang="pt-MZ">
+<html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="description" content="Clique e Compra - O melhor marketplace de Moçambique. Produtos variados com entrega em Maputo, Beira, Nampula e todo o país.">
-    <title>Clique e Compra | Marketplace Moçambique</title>
+    <title>Latino Recargas | Diamantes e Sensi - Moçambique</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, 'Inter', sans-serif;
         }
 
         body {
-            background-color: #f8f9fc;
-            padding-top: 80px;
+            background: linear-gradient(135deg, #071a24 0%, #0a2a38 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            position: relative;
         }
 
-        /* ========== HEADER FIXO ========== */
+        /* Fundo decorativo sutil */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(46, 204, 113, 0.08) 0%, rgba(7, 26, 36, 0.4) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* HEADER (azul escuro, verde e branco) */
         .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(135deg, #0A1C3A 0%, #0A2A4A 100%);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #08212e 0%, #03161f 100%);
+            border-bottom: 3px solid #2ecc71;
+            padding: 1rem 2rem;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
-            border-bottom: 2px solid #D4AF37;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .logo-icon {
-            font-size: 2rem;
-            color: #D4AF37;
-        }
-
-        .logo-text {
-            font-size: 1.6rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            color: white;
-            text-shadow: 1px 1px 0 #0A1C3A;
-        }
-
-        .logo-text span {
-            color: #D4AF37;
+        .logo {
+            font-size: 1.8rem;
             font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #ffffff, #2ecc71);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .menu-hamburger {
-            background: #D4AF37;
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-
-        .menu-hamburger:hover {
-            background: #c5a022;
-            transform: scale(0.96);
-        }
-
-        .menu-hamburger span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background-color: #0A1C3A;
-            border-radius: 3px;
-        }
-
-        .search-btn {
-            background: white;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-        }
-
-        .search-btn:hover {
-            background: #D4AF37;
-            transform: scale(1.05);
-        }
-
-        .search-btn i {
-            font-size: 1.3rem;
-            color: #0A1C3A;
-            font-weight: bold;
-        }
-
-        /* Menu lateral */
-        .side-menu {
-            position: fixed;
-            top: 0;
-            left: -300px;
-            width: 280px;
-            height: 100%;
-            background: #0A2A4A;
-            z-index: 1100;
-            transition: left 0.3s ease;
-            box-shadow: 2px 0 15px rgba(0,0,0,0.3);
-            padding: 2rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            border-right: 2px solid #D4AF37;
-        }
-
-        .side-menu.open {
-            left: 0;
-        }
-
-        .side-menu .close-menu {
-            align-self: flex-end;
-            background: #D4AF37;
-            width: 35px;
-            height: 35px;
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            cursor: pointer;
-            font-weight: bold;
-            color: #0A1C3A;
-        }
-
-        .side-menu ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .side-menu ul li a {
-            color: white;
+        .logo a {
             text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: 500;
-            transition: 0.2s;
-            display: block;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            background: inherit;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        .side-menu ul li a:hover {
-            color: #D4AF37;
-            padding-left: 8px;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1050;
-            display: none;
-        }
-
-        .overlay.active {
-            display: block;
-        }
-
-        /* Barra de pesquisa */
-        .search-bar-container {
-            position: fixed;
-            top: 80px;
-            left: 0;
-            width: 100%;
-            background: white;
-            padding: 0.8rem 2rem;
-            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
-            z-index: 1001;
-            display: none;
-            border-bottom: 2px solid #D4AF37;
-        }
-
-        .search-bar-container.show {
+        /* menu navegação */
+        .nav-menu {
             display: flex;
-            gap: 0.5rem;
-        }
-
-        .search-input {
-            flex: 1;
-            padding: 12px 18px;
-            border: 1px solid #ccc;
-            border-radius: 40px;
-            font-size: 1rem;
-            outline: none;
-        }
-
-        .search-input:focus {
-            border-color: #D4AF37;
-        }
-
-        .search-submit {
-            background: #0A1C3A;
-            color: white;
-            border: none;
-            padding: 0 24px;
-            border-radius: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .search-submit:hover {
-            background: #D4AF37;
-            color: #0A1C3A;
-        }
-
-        /* Seção de filtros por categoria */
-        .filters-section {
-            max-width: 1200px;
-            margin: 1rem auto 0.5rem;
-            padding: 0 1.5rem;
-        }
-
-        .filters-title {
-            font-size: 0.9rem;
-            color: #0A1C3A;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .filters-title i {
-            color: #D4AF37;
-        }
-
-        .categories-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .filter-chip {
-            background: #f0f2f5;
-            border: 1px solid #e2e8f0;
-            padding: 0.6rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #0A1C3A;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .filter-chip i {
-            font-size: 1rem;
-            color: #D4AF37;
-        }
-
-        .filter-chip:hover {
-            background: #D4AF37;
-            color: #0A1C3A;
-            border-color: #D4AF37;
-            transform: translateY(-2px);
-        }
-
-        .filter-chip.active {
-            background: #D4AF37;
-            color: #0A1C3A;
-            border-color: #D4AF37;
-            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
-        }
-
-        .results-info {
-            max-width: 1200px;
-            margin: 0.5rem auto 0;
-            padding: 0 1.5rem;
-            font-size: 0.85rem;
-            color: #4a5568;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .clear-filter {
-            background: none;
-            border: none;
-            color: #D4AF37;
-            cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 500;
-            text-decoration: underline;
-        }
-
-        /* Container produtos */
-        .products-container {
-            max-width: 1200px;
-            margin: 1.5rem auto;
-            padding: 0 1.5rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 2rem;
-        }
-
-        /* Cards produto */
-        .product-card {
-            background: white;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.25s ease, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            position: relative;
-        }
-
-        .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 30px rgba(10, 28, 58, 0.2);
-            border-color: #D4AF37;
-        }
-
-        .product-img {
-            background-color: #f0f2f5;
-            height: 200px;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            position: relative;
         }
 
-        .product-info {
-            padding: 1rem 1rem 1.2rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-title {
+        .nav-menu a {
+            color: #f0f4f8;
+            text-decoration: none;
+            font-weight: 600;
             font-size: 1.1rem;
-            font-weight: 700;
-            color: #0A1C3A;
-            margin-bottom: 0.3rem;
+            transition: 0.3s;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
         }
 
-        .product-price {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #D4AF37;
-            margin: 0.3rem 0;
+        .nav-menu a:hover, .nav-menu a.active {
+            color: #2ecc71;
+            border-bottom-color: #2ecc71;
         }
 
-        .product-desc {
-            font-size: 0.8rem;
-            color: #4a5568;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        .card-buttons {
-            display: flex;
-            gap: 0.6rem;
-            margin-top: auto;
-        }
-
-        .btn-vermais {
-            background: transparent;
-            border: 2px solid #D4AF37;
-            color: #0A1C3A;
-            font-weight: bold;
-            padding: 0.6rem;
-            border-radius: 40px;
-            cursor: pointer;
-            transition: 0.2s;
+        /* MAIN - PÁGINA DE VENDAS */
+        .main-content {
             flex: 1;
-            font-size: 0.85rem;
-        }
-
-        .btn-vermais:hover {
-            background: #D4AF37;
-            color: white;
-        }
-
-        .btn-comprar-card {
-            background: #25D366;
-            border: none;
-            color: white;
-            font-weight: bold;
-            padding: 0.6rem;
-            border-radius: 40px;
-            cursor: pointer;
-            transition: 0.2s;
-            flex: 1;
-            font-size: 0.85rem;
             display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 0.4rem;
-        }
-
-        .btn-comprar-card:hover {
-            background: #128C7E;
-            transform: scale(1.02);
-        }
-
-        /* Modal */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1200;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            visibility: hidden;
-            opacity: 0;
-            transition: 0.2s;
-        }
-
-        .modal.active {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .modal-content {
-            background: white;
-            max-width: 500px;
-            width: 90%;
-            border-radius: 32px;
-            padding: 1.8rem;
-            text-align: center;
+            padding: 3rem 1.5rem;
             position: relative;
-            border-top: 6px solid #D4AF37;
+            z-index: 2;
         }
 
-        .modal-content h3 {
-            font-size: 1.6rem;
-            color: #0A1C3A;
-            margin-bottom: 0.8rem;
+        .cards-container {
+            max-width: 1300px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
         }
 
-        .modal-price {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #D4AF37;
+        /* cards estilo premium com vidro fosco */
+        .card {
+            background: rgba(8, 33, 46, 0.75);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            width: 340px;
+            padding: 2rem 1.8rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            border: 1px solid rgba(46, 204, 113, 0.4);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            border-color: #2ecc71;
+            box-shadow: 0 25px 40px -10px #2ecc7140;
+            background: rgba(8, 33, 46, 0.85);
+        }
+
+        .card-icon {
+            font-size: 4rem;
+            color: #2ecc71;
+            margin-bottom: 1rem;
+        }
+
+        .card h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+
+        .card p {
+            color: #d4e0e9;
+            margin: 1rem 0;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .price-tag {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #2ecc71;
+            background: rgba(0,0,0,0.45);
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 60px;
             margin: 0.8rem 0;
         }
 
-        .modal-desc {
-            color: #2d3748;
-            margin: 1rem 0;
-            line-height: 1.5;
-        }
-
-        .btn-comprar-agora {
-            background: #25D366;
+        .btn-comprar {
+            background: #2ecc71;
             border: none;
-            color: white;
+            color: #08212e;
             font-weight: bold;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
             font-size: 1.1rem;
+            padding: 0.9rem 1.5rem;
+            border-radius: 60px;
             cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
             margin-top: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 12px;
-            right: 20px;
-            font-size: 1.8rem;
-            cursor: pointer;
-            background: #eee;
-            width: 32px;
-            height: 32px;
-            border-radius: 30px;
+            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        /* Footer real */
-        footer {
-            background: #0A1C3A;
-            color: #e2e8f0;
-            margin-top: 3rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2.5rem 1.5rem 1.5rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-section h4 {
-            color: #D4AF37;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .footer-section p, .footer-section ul {
-            font-size: 0.85rem;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section ul li a {
-            color: #e2e8f0;
+            gap: 10px;
             text-decoration: none;
-            transition: 0.2s;
         }
 
-        .footer-section ul li a:hover {
-            color: #D4AF37;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 0.8rem;
-        }
-
-        .social-icons a {
-            color: #D4AF37;
-            font-size: 1.3rem;
-            transition: 0.2s;
-        }
-
-        .social-icons a:hover {
+        .btn-comprar:hover {
+            background: #27ae60;
+            transform: scale(1.02);
             color: white;
-            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(46,204,113,0.5);
         }
 
-        .footer-bottom {
+        .info-badge {
+            text-align: center;
+            margin-top: 1.2rem;
+            font-size: 0.8rem;
+            color: #bbd4e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* selo Moçambique */
+        .mz-badge {
+            background: rgba(46, 204, 113, 0.2);
+            border-radius: 40px;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 8px;
+            color: #2ecc71;
+        }
+
+        footer {
+            background: #03161fcc;
+            backdrop-filter: blur(5px);
             text-align: center;
             padding: 1.2rem;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-            font-size: 0.75rem;
-            color: #94a3b8;
+            font-size: 0.85rem;
+            border-top: 1px solid #2ecc7144;
+            z-index: 2;
+            position: relative;
         }
 
-        @media (max-width: 640px) {
+        /* Responsividade */
+        @media (max-width: 700px) {
             .header {
-                padding: 0.6rem 1rem;
-            }
-            .logo-text {
-                font-size: 1.2rem;
-            }
-            .products-container {
-                gap: 1rem;
-                padding: 0 1rem;
-            }
-            .card-buttons {
                 flex-direction: column;
+                gap: 1rem;
+                text-align: center;
             }
-            .categories-wrapper {
-                gap: 0.5rem;
+            .nav-menu {
+                gap: 1.8rem;
             }
-            .filter-chip {
-                padding: 0.4rem 1rem;
-                font-size: 0.75rem;
+            .card {
+                width: 300px;
+                padding: 1.6rem;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            .price-tag {
+                font-size: 1.6rem;
             }
         }
+
+        .btn-comprar i {
+            pointer-events: none;
+        }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-<header class="header">
-    <div class="logo-area">
-        <i class="fas fa-store logo-icon"></i>
-        <div class="logo-text">Clique e <span>Compra</span></div>
-    </div>
-    <div class="nav-controls">
-        <div class="search-btn" id="searchIcon">
-            <i class="fas fa-search"></i>
-        </div>
-        <div class="menu-hamburger" id="menuHamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-</header>
+    <!-- Header: logo e menu -->
+    <header class="header">
+        <div class="logo">🇲🇿 Latino Recargas</div>
+        <nav class="nav-menu">
+            <a href="index.html" class="active" id="nav-home">Início</a>
+            <a href="diamantes.html" id="nav-diamantes">Diamantes</a>
+            <a href="sensi.html" id="nav-sensi">Sensi</a>
+        </nav>
+    </header>
 
-<div class="side-menu" id="sideMenu">
-    <div class="close-menu" id="closeMenuBtn">&times;</div>
-    <ul>
-        <li><a href="#"><i class="fas fa-home"></i> Início</a></li>
-        <li><a href="#"><i class="fas fa-fire"></i> Ofertas</a></li>
-        <li><a href="#"><i class="fas fa-tag"></i> Categorias</a></li>
-        <li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
-        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Entregas em Moçambique</a></li>
-    </ul>
-</div>
-<div class="overlay" id="overlay"></div>
-
-<div class="search-bar-container" id="searchBar">
-    <input type="text" id="searchInput" class="search-input" placeholder="Buscar produto... Ex: telemóvel, tênis, fone...">
-    <button id="searchBtn" class="search-submit">Buscar</button>
-</div>
-
-<!-- Seção de filtros por categoria -->
-<div class="filters-section">
-    <div class="filters-title">
-        <i class="fas fa-filter"></i> Filtrar por categoria
-    </div>
-    <div class="categories-wrapper" id="categoriesContainer"></div>
-</div>
-
-<div class="results-info" id="resultsInfo">
-    <span id="productCount"></span>
-    <button class="clear-filter" id="clearFiltersBtn" style="display: none;">Limpar filtros ✕</button>
-</div>
-
-<div class="products-container" id="productsGrid"></div>
-
-<!-- Footer real Moçambique -->
-<footer>
-    <div class="footer-content">
-        <div class="footer-section">
-            <h4><i class="fas fa-store"></i> Clique e Compra</h4>
-            <p>Loja Multi-Produtos. Produtos de qualidade com entregas em Maputo, Matola, Beira, Nampula, Quelimane.</p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
+    <!-- Main: página de vendas com cards (diamantes e sensi) -->
+    <main class="main-content" id="main-content">
+        <div class="cards-container" id="cards-container">
+            <!-- Card de Diamantes -->
+            <div class="card" data-category="diamante">
+                <div class="card-icon"><i class="fas fa-gem"></i></div>
+                <h2>💎 Diamantes FF</h2>
+                <p>Recarregue sua conta Free Fire com os melhores preços em Moçambique. Entrega rápida e suporte via WhatsApp.</p>
+                <div class="price-tag">a partir de 180 MT</div>
+                <a href="diamantes.html" class="btn-comprar"><i class="fas fa-shopping-cart"></i> Comprar Diamantes</a>
+                <div class="info-badge">
+                    <i class="fas fa-bolt"></i> Entrega imediata
+                </div>
+                <div class="mz-badge">
+                    <i class="fas fa-map-marker-alt"></i> Pagamento em Metical (MZN)
+                </div>
+            </div>
+            <!-- Card de Sensi (Passe de Elite) -->
+            <div class="card" data-category="sensi">
+                <div class="card-icon"><i class="fas fa-gamepad"></i></div>
+                <h2>🎮 Sensi (Passe Elite)</h2>
+                <p>Ative o Passe de Elite e ganhe skins lendárias, emotes e muito mais. Exclusivo para jogadores moçambicanos.</p>
+                <div class="price-tag">a partir de 450 MT</div>
+                <a href="sensi.html" class="btn-comprar"><i class="fas fa-ticket-alt"></i> Ativar Sensi</a>
+                <div class="info-badge">
+                    <i class="fas fa-star"></i> Recompensas diárias + Missões
+                </div>
+                <div class="mz-badge">
+                    <i class="fas fa-phone-alt"></i> Suporte 24h | M-Pesa / E-Mola
+                </div>
             </div>
         </div>
-        <div class="footer-section">
-            <h4>Atendimento</h4>
-            <ul>
-                <li><i class="fas fa-phone"></i> +258 84 123 4567</li>
-                <li><i class="fab fa-whatsapp"></i> +258 82 123 4567</li>
-                <li><i class="fas fa-envelope"></i> apoio@cliquecompra.co.mz</li>
-                <li><i class="fas fa-clock"></i> Seg-Sáb: 8h - 20h</li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 Clique e Compra - Loja Multi-Produtos. Todos os direitos reservados.</p>
-        <p style="font-size: 0.7rem; margin-top: 0.3rem;">Av. Julius Nyerere, Maputo - Moçambique</p>
-    </div>
-</footer>
+    </main>
 
-<div id="productModal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" id="closeModalBtn">&times;</span>
-        <h3 id="modalTitle">Produto</h3>
-        <div id="modalImage" style="font-size:3rem; margin:0.5rem 0;">🛍️</div>
-        <div class="modal-price" id="modalPrice">0 MT</div>
-        <div class="modal-desc" id="modalDesc"></div>
-        <button class="btn-comprar-agora" id="modalBuyBtn"><i class="fab fa-whatsapp"></i> Comprar Agora</button>
-    </div>
-</div>
-
-<script src="produtos.js"></script>
-<script src="script.js"></script>
+    <footer>
+        <p><i class="fas fa-store"></i> Latino Recargas Moçambique | A melhor loja de Diamantes e Sensi para Free Fire</p>
+        <p style="font-size:0.75rem; margin-top: 8px;"><i class="fas fa-credit-card"></i> Pagamentos via M-Pesa, E-Mola, transferência bancária | Entrega instantânea</p>
+        <p style="font-size:0.7rem; margin-top: 6px; opacity:0.8;">📍 Atendimento em todo território nacional - Maputo, Beira, Nampula, Quelimane e mais</p>
+    </footer>
 </body>
 </html>
