@@ -1,308 +1,267 @@
-<!-- index.html - Página inicial com cards que direcionam para as páginas específicas -->
 <!DOCTYPE html>
-<html lang="pt-pt">
+<html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Latino Recargas | Diamantes e Sensi - Moçambique</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, 'Inter', sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GARENA SHOPPING</title>
 
-        body {
-            background: linear-gradient(135deg, #071a24 0%, #0a2a38 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            color: #fff;
-            position: relative;
-        }
+<style>
 
-        /* Fundo decorativo sutil */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 30%, rgba(46, 204, 113, 0.08) 0%, rgba(7, 26, 36, 0.4) 100%);
-            pointer-events: none;
-            z-index: 0;
-        }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-        /* HEADER (azul escuro, verde e branco) */
-        .header {
-            background: linear-gradient(135deg, #08212e 0%, #03161f 100%);
-            border-bottom: 3px solid #2ecc71;
-            padding: 1rem 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+body{
+  font-family:Arial;
+  background:#171717;
+  color:#fff;
+}
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            background: linear-gradient(135deg, #ffffff, #2ecc71);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
+/* HEADER FIXO */
+.header-fixed{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:#111;
+  text-align:center;
+  padding:15px;
+  z-index:1000;
+  border-bottom:1px solid #333;
+}
 
-        .logo a {
-            text-decoration: none;
-            background: inherit;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
+.header-fixed h1{
+  color:#00ffcc;
+  font-size:18px;
+}
 
-        /* menu navegação */
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
+/* FOOTER */
+.footer{
+  text-align:center;
+  padding:20px;
+  background:#111;
+  margin-top:40px;
+  font-size:14px;
+  opacity:0.7;
+}
 
-        .nav-menu a {
-            color: #f0f4f8;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: 0.3s;
-            padding: 0.5rem 0;
-            border-bottom: 2px solid transparent;
-        }
+/* FUNDO */
+.lines{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:0;
+}
 
-        .nav-menu a:hover, .nav-menu a.active {
-            color: #2ecc71;
-            border-bottom-color: #2ecc71;
-        }
+.line{
+  position:absolute;
+  width:1px;
+  height:100%;
+  left:50%;
+  background:rgba(255,255,255,0.1);
+}
 
-        /* MAIN - PÁGINA DE VENDAS */
-        .main-content {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 3rem 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
+.line::after{
+  content:'';
+  position:absolute;
+  width:100%;
+  height:15vh;
+  top:-50%;
+  background:linear-gradient(to bottom, transparent, #fff);
+  animation:drop 7s infinite;
+}
 
-        .cards-container {
-            max-width: 1300px;
-            width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 3rem;
-        }
+.line:nth-child(1){ margin-left:-25%; }
+.line:nth-child(2){ margin-left:0; }
+.line:nth-child(3){ margin-left:25%; }
 
-        /* cards estilo premium com vidro fosco */
-        .card {
-            background: rgba(8, 33, 46, 0.75);
-            backdrop-filter: blur(12px);
-            border-radius: 2rem;
-            width: 340px;
-            padding: 2rem 1.8rem;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s;
-            border: 1px solid rgba(46, 204, 113, 0.4);
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
-        }
+@keyframes drop{
+  0%{ top:-50%; }
+  100%{ top:110%; }
+}
 
-        .card:hover {
-            transform: translateY(-12px);
-            border-color: #2ecc71;
-            box-shadow: 0 25px 40px -10px #2ecc7140;
-            background: rgba(8, 33, 46, 0.85);
-        }
+/* CONTAINER */
+.container{
+  position:relative;
+  z-index:2;
+  padding:80px 20px 20px;
+}
 
-        .card-icon {
-            font-size: 4rem;
-            color: #2ecc71;
-            margin-bottom: 1rem;
-        }
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
 
-        .card h2 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: white;
-            letter-spacing: -0.5px;
-        }
+/* CONTAS */
+.grid-contas{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
 
-        .card p {
-            color: #d4e0e9;
-            margin: 1rem 0;
-            font-weight: 500;
-            line-height: 1.4;
-        }
+/* CARD */
+.card{
+  background:#1f1f1f;
+  border-radius:10px;
+  padding:20px;
+  text-align:center;
+  transition:0.3s;
+  min-height:150px;
+}
 
-        .price-tag {
-            font-size: 1.9rem;
-            font-weight: 800;
-            color: #2ecc71;
-            background: rgba(0,0,0,0.45);
-            display: inline-block;
-            padding: 0.3rem 1.2rem;
-            border-radius: 60px;
-            margin: 0.8rem 0;
-        }
+.card:hover{
+  transform:scale(1.05);
+}
 
-        .btn-comprar {
-            background: #2ecc71;
-            border: none;
-            color: #08212e;
-            font-weight: bold;
-            font-size: 1.1rem;
-            padding: 0.9rem 1.5rem;
-            border-radius: 60px;
-            cursor: pointer;
-            transition: 0.2s;
-            width: 100%;
-            margin-top: 1rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            text-decoration: none;
-        }
+/* DESTAQUE PASSE */
+.passe{
+  border:2px solid #00ffcc;
+  background:#0f2a28;
+}
 
-        .btn-comprar:hover {
-            background: #27ae60;
-            transform: scale(1.02);
-            color: white;
-            box-shadow: 0 5px 15px rgba(46,204,113,0.5);
-        }
+/* IMAGEM */
+.card img{
+  width:100%;
+  height:140px;
+  object-fit:cover;
+  border-radius:8px;
+  margin-bottom:10px;
+}
 
-        .info-badge {
-            text-align: center;
-            margin-top: 1.2rem;
-            font-size: 0.8rem;
-            color: #bbd4e9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
+.title{
+  font-size:16px;
+  color:#00ffcc;
+}
 
-        /* selo Moçambique */
-        .mz-badge {
-            background: rgba(46, 204, 113, 0.2);
-            border-radius: 40px;
-            padding: 4px 12px;
-            font-size: 0.7rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            margin-top: 8px;
-            color: #2ecc71;
-        }
+.price{
+  font-size:18px;
+  margin:10px 0;
+}
 
-        footer {
-            background: #03161fcc;
-            backdrop-filter: blur(5px);
-            text-align: center;
-            padding: 1.2rem;
-            font-size: 0.85rem;
-            border-top: 1px solid #2ecc7144;
-            z-index: 2;
-            position: relative;
-        }
+.btn{
+  display:inline-block;
+  background:#00ffcc;
+  color:#000;
+  padding:8px 12px;
+  border-radius:5px;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-        /* Responsividade */
-        @media (max-width: 700px) {
-            .header {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-            .nav-menu {
-                gap: 1.8rem;
-            }
-            .card {
-                width: 300px;
-                padding: 1.6rem;
-            }
-            .logo {
-                font-size: 1.5rem;
-            }
-            .price-tag {
-                font-size: 1.6rem;
-            }
-        }
+/* TRANSIÇÃO SUAVE ENTRE SESSÕES */
+.section{
+  margin-top:40px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  animation:fadeSlide 0.8s ease;
+}
 
-        .btn-comprar i {
-            pointer-events: none;
-        }
-    </style>
+@keyframes fadeSlide{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* TITULOS */
+.section-title{
+  text-align:center;
+  margin-bottom:20px;
+  color:#00ffcc;
+}
+
+</style>
 </head>
+
 <body>
 
-    <!-- Header: logo e menu -->
-    <header class="header">
-        <div class="logo">Latino Recargas</div>
-        <nav class="nav-menu">
-            <a href="index.html" class="active" id="nav-home">Início</a>
-            <a href="diamantes.html" id="nav-diamantes">Diamantes</a>
-            <a href="sensi.html" id="nav-sensi">Sensi</a>
-        </nav>
-    </header>
+<!-- HEADER -->
+<div class="header-fixed">
+  <h1>🛍️ GARENA SHOPPING</h1>
+</div>
 
-    <!-- Main: página de vendas com cards (diamantes e sensi) -->
-    <main class="main-content" id="main-content">
-        <div class="cards-container" id="cards-container">
-            <!-- Card de Diamantes -->
-            <div class="card" data-category="diamante">
-                <div class="card-icon"><i class="fas fa-gem"></i></div>
-                <h2>💎 Diamantes FF</h2>
-                <p>Recarregue sua conta Free Fire com os melhores preços em Moçambique. Entrega rápida e suporte via WhatsApp.</p>
-                <div class="price-tag">a partir de 180 MT</div>
-                <a href="diamantes.html" class="btn-comprar"><i class="fas fa-shopping-cart"></i> Comprar Diamantes</a>
-                <div class="info-badge">
-                    <i class="fas fa-bolt"></i> Entrega imediata
-                </div>
-                <div class="mz-badge">
-                    <i class="fas fa-map-marker-alt"></i> Pagamento em Metical (MZN)
-                </div>
-            </div>
-            <!-- Card de Sensi (Passe de Elite) -->
-            <div class="card" data-category="sensi">
-                <div class="card-icon"><i class="fas fa-gamepad"></i></div>
-                <h2>🎮 Sensi (Passe Elite)</h2>
-                <p>Ative o Passe de Elite e ganhe skins lendárias, emotes e muito mais. Exclusivo para jogadores moçambicanos.</p>
-                <div class="price-tag">a partir de 450 MT</div>
-                <a href="sensi.html" class="btn-comprar"><i class="fas fa-ticket-alt"></i> Ativar Sensi</a>
-                <div class="info-badge">
-                    <i class="fas fa-star"></i> Recompensas diárias + Missões
-                </div>
-                <div class="mz-badge">
-                    <i class="fas fa-phone-alt"></i> Suporte 24h | M-Pesa / E-Mola
-                </div>
-            </div>
-        </div>
-    </main>
+<!-- FUNDO -->
+<div class="lines">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</div>
 
-    <footer>
-        <p><i class="fas fa-store"></i> Latino Recargas Moçambique | A melhor loja de Diamantes e Sensi para Free Fire</p>
-        <p style="font-size:0.75rem; margin-top: 8px;"><i class="fas fa-credit-card"></i> Pagamentos via M-Pesa, E-Mola, transferência bancária | Entrega instantânea</p>
-        <p style="font-size:0.7rem; margin-top: 6px; opacity:0.8;">📍 Atendimento em todo território nacional - Maputo, Beira, Nampula, Quelimane e mais</p>
-    </footer>
+<div class="container">
+
+<!-- 🔥 PASSES DESTACADOS -->
+<h2 class="section-title">🔥 Ofertas Especiais</h2>
+<div class="grid">
+
+  <div class="card passe">
+    <div class="title">Passe 700💎</div>
+    <div class="price">169 MT</div>
+    <a class="btn" href="https://wa.me/258856011586?text=Quero+Passe+700">Comprar</a>
+  </div>
+
+  <div class="card passe">
+    <div class="title">Passe 1500💎</div>
+    <div class="price">400 MT</div>
+    <a class="btn" href="https://wa.me/258856011586?text=Quero+Passe+1500">Comprar</a>
+  </div>
+
+</div>
+
+<!-- 💎 DIAMANTES NORMAIS -->
+<div class="section">
+
+<h2 class="section-title">💎 Diamantes</h2>
+
+<div class="grid">
+
+  <div class="card"><div class="title">170💎</div><div class="price">85 MT</div><a class="btn" href="https://wa.me/258856011586?text=170">Comprar</a></div>
+  <div class="card"><div class="title">288💎</div><div class="price">145 MT</div><a class="btn" href="https://wa.me/258856011586?text=288">Comprar</a></div>
+  <div class="card"><div class="title">392💎</div><div class="price">230 MT</div><a class="btn" href="https://wa.me/258856011586?text=392">Comprar</a></div>
+  <div class="card"><div class="title">497💎</div><div class="price">340 MT</div><a class="btn" href="https://wa.me/258856011586?text=497">Comprar</a></div>
+  <div class="card"><div class="title">589💎</div><div class="price">410 MT</div><a class="btn" href="https://wa.me/258856011586?text=589">Comprar</a></div>
+  <div class="card"><div class="title">693💎</div><div class="price">440 MT</div><a class="btn" href="https://wa.me/258856011586?text=693">Comprar</a></div>
+  <div class="card"><div class="title">814💎</div><div class="price">560 MT</div><a class="btn" href="https://wa.me/258856011586?text=814">Comprar</a></div>
+  <div class="card"><div class="title">1188💎</div><div class="price">810 MT</div><a class="btn" href="https://wa.me/258856011586?text=1188">Comprar</a></div>
+  <div class="card"><div class="title">2121💎</div><div class="price">1080 MT</div><a class="btn" href="https://wa.me/258856011586?text=2121">Comprar</a></div>
+  <div class="card"><div class="title">2480💎</div><div class="price">1480 MT</div><a class="btn" href="https://wa.me/258856011586?text=2480">Comprar</a></div>
+  <div class="card"><div class="title">2890💎</div><div class="price">1840 MT</div><a class="btn" href="https://wa.me/258856011586?text=2890">Comprar</a></div>
+  <div class="card"><div class="title">4888💎</div><div class="price">2200 MT</div><a class="btn" href="https://wa.me/258856011586?text=4888">Comprar</a></div>
+
+</div>
+
+</div>
+
+<!-- 🎮 CONTAS -->
+<div class="section">
+
+<h2 class="section-title">🎮 Sessão de Contas</h2>
+
+
+<div class="grid-contas">
+
+  <div class="card"><img src="250.jpg"><div class="title">Conta Básica</div><div class="price">250 MT</div><a class="btn" href="https://wa.me/258856011586">Comprar</a></div>
+  <div class="card"><img src="699.jpg"><div class="title">Conta Média</div><div class="price">699 MT</div><a class="btn" href="https://wa.me/258856011586">Comprar</a></div>
+  <div class="card"><img src="130.jpg"><div class="title">Conta Premium</div><div class="price">130 MT</div><a class="btn" href="https://wa.me/258856011586">Comprar</a></div>
+  <div class="card"><img src="199.jpg"><div class="title">Conta Premium</div><div class="price">199 MT</div><a class="btn" href="https://wa.me/258856011586">Comprar</a></div>
+  <div class="card"><img src="599.jpg"><div class="title">Conta Premium</div><div class="price">599 MT</div><a class="btn" href="https://wa.me/258856011586">Comprar</a></div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  © 2026 GARENA SHOPPING - Todos direitos reservados
+</div>
+
 </body>
 </html>
