@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contas - GARENA SHOPPING</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Segoe UI', Arial, sans-serif;
+  background:#121212;
+  color:#fff;
+}
+
+/* HEADER MODERNO COORDENADO */
+.header{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:12px 20px;
+  background:linear-gradient(90deg,#0fffc2,#00bcd4);
+  box-shadow:0 5px 15px rgba(0,0,0,0.4);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+  border-bottom-left-radius:10px;
+  border-bottom-right-radius:10px;
+  backdrop-filter: blur(10px);
+}
+
+.header h1{
+  font-size:20px;
+  color:#000;
+  text-shadow:1px 1px 2px rgba(255,255,255,0.6);
+}
+
+/* CONTAINER */
+.container{
+  padding:90px 20px 40px 20px;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* GRID SIMPLES PARA CONTAS */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
+}
+
+/* CARD */
+.card{
+  background:#1f1f1f;
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+  min-height:140px;
+  transition:0.3s;
+  box-shadow:0 4px 12px rgba(0,255,204,0.2);
+}
+
+.card:hover{
+  transform:translateY(-5px) scale(1.05);
+  box-shadow:0 8px 20px rgba(0,255,204,0.5);
+}
+
+.card img{
+  width:100%;
+  height:140px;
+  object-fit:cover;
+  border-radius:8px;
+  margin-bottom:10px;
+}
+
+.title{
+  font-size:16px;
+  color:#00ffcc;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+.price{
+  font-size:18px;
+  margin-bottom:12px;
+}
+
+/* BOTÃO */
+.btn{
+  display:inline-block;
+  background:#00ffcc;
+  color:#000;
+  padding:10px 15px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#00e6b8;
+  transform:scale(1.05);
+}
+
+/* CTA */
+.cta{
+  margin-top:25px;
+  text-align:center;
+}
+
+.cta a{
+  display:inline-block;
+  padding:12px 22px;
+  background:linear-gradient(90deg,#00ffc2,#00bcd4);
+  color:#000;
+  border-radius:50px;
+  font-weight:bold;
+  text-decoration:none;
+  margin:5px;
+  box-shadow:0 5px 15px rgba(0,255,204,0.3);
+  transition:0.3s;
+}
+
+.cta a:hover{
+  transform:scale(1.05);
+  box-shadow:0 8px 20px rgba(0,255,204,0.5);
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  margin-top:40px;
+  padding:20px 0;
+  background:#111;
+  color:#00ffcc;
+  border-top:1px solid #00ffcc;
+  font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>🎮 Contas Free Fire</h1>
+</div>
+
+<div class="container">
+
+<div class="grid">
+  <div class="card">
+    <img src="250.jpg">
+    <div class="title">Conta Básica</div>
+    <div class="price">250 MT</div>
+    <a class="btn" href="https://wa.me/258856011586?text=Quero+Conta+Básica">Comprar</a>
+  </div>
+
+  <div class="card">
+    <img src="699.jpg">
+    <div class="title">Conta Média</div>
+    <div class="price">699 MT</div>
+    <a class="btn" href="https://wa.me/258856011586?text=Quero+Conta+Média">Comprar</a>
+  </div>
+
+  <div class="card">
+    <img src="130.jpg">
+    <div class="title">Conta Premium</div>
+    <div class="price">130 MT</div>
+    <a class="btn" href="https://wa.me/258856011586?text=Quero+Conta+Premium">Comprar</a>
+  </div>
+
+  <div class="card">
+    <img src="199.jpg">
+    <div class="title">Conta Premium</div>
+    <div class="price">199 MT</div>
+    <a class="btn" href="https://wa.me/258856011586?text=Quero+Conta+Premium">Comprar</a>
+  </div>
+
+  <div class="card">
+    <img src="599.jpg">
+    <div class="title">Conta Premium</div>
+    <div class="price">599 MT</div>
+    <a class="btn" href="https://wa.me/258856011586?text=Quero+Conta+Premium">Comprar</a>
+  </div>
+</div>
+
+<div class="cta">
+  <p>💎 Queres diamantes?</p>
+  <a href="index.html">Ver Diamantes</a>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  &copy; 2026 Garena Shopping - Todos os direitos reservados
+</div>
+
+</div>
+</body>
+</html>

@@ -6,175 +6,146 @@
 <title>GARENA SHOPPING</title>
 
 <style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
-  font-family:Arial;
-  background:#171717;
+  font-family:'Segoe UI', Arial, sans-serif;
+  background:#121212;
   color:#fff;
 }
 
-/* HEADER FIXO */
-.header-fixed{
+/* HEADER MODERNO */
+.header{
   position:fixed;
   top:0;
   width:100%;
-  background:#111;
-  text-align:center;
-  padding:15px;
+  padding:12px 20px;
+  background:linear-gradient(90deg,#0fffc2,#00bcd4);
+  box-shadow:0 5px 15px rgba(0,0,0,0.4);
+  display:flex;
+  justify-content:center;
+  align-items:center;
   z-index:1000;
-  border-bottom:1px solid #333;
+  border-bottom-left-radius:10px;
+  border-bottom-right-radius:10px;
+  backdrop-filter: blur(10px);
 }
 
-.header-fixed h1{
-  color:#00ffcc;
-  font-size:18px;
-}
-
-/* FOOTER */
-.footer{
-  text-align:center;
-  padding:20px;
-  background:#111;
-  margin-top:40px;
-  font-size:14px;
-  opacity:0.7;
-}
-
-/* FUNDO */
-.lines{
-  position:fixed;
-  width:100%;
-  height:100%;
-  z-index:0;
-}
-
-.line{
-  position:absolute;
-  width:1px;
-  height:100%;
-  left:50%;
-  background:rgba(255,255,255,0.1);
-}
-
-.line::after{
-  content:'';
-  position:absolute;
-  width:100%;
-  height:15vh;
-  top:-50%;
-  background:linear-gradient(to bottom, transparent, #fff);
-  animation:drop 7s infinite;
-}
-
-.line:nth-child(1){ margin-left:-25%; }
-.line:nth-child(2){ margin-left:0; }
-.line:nth-child(3){ margin-left:25%; }
-
-@keyframes drop{
-  0%{ top:-50%; }
-  100%{ top:110%; }
+.header h1{
+  font-size:20px;
+  color:#000;
+  text-shadow:1px 1px 2px rgba(255,255,255,0.6);
 }
 
 /* CONTAINER */
 .container{
-  position:relative;
-  z-index:2;
-  padding:80px 20px 20px;
+  padding:90px 20px 40px 20px;
+  max-width:1200px;
+  margin:0 auto;
 }
 
 /* GRID */
 .grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
   gap:20px;
 }
 
-/* CONTAS */
-.grid-contas{
+.grid-normal{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  grid-template-columns:repeat(2,1fr);
   gap:20px;
 }
 
 /* CARD */
 .card{
   background:#1f1f1f;
-  border-radius:10px;
-  padding:20px;
+  padding:15px;
+  border-radius:12px;
   text-align:center;
+  min-height:140px;
   transition:0.3s;
-  min-height:150px;
+  box-shadow:0 4px 12px rgba(0,255,204,0.2);
 }
 
 .card:hover{
-  transform:scale(1.05);
+  transform:translateY(-5px) scale(1.05);
+  box-shadow:0 8px 20px rgba(0,255,204,0.5);
 }
 
-/* DESTAQUE PASSE */
 .passe{
   border:2px solid #00ffcc;
   background:#0f2a28;
 }
 
-/* IMAGEM */
-.card img{
-  width:100%;
-  height:140px;
-  object-fit:cover;
-  border-radius:8px;
-  margin-bottom:10px;
-}
-
 .title{
   font-size:16px;
   color:#00ffcc;
+  font-weight:bold;
+  margin-bottom:8px;
 }
 
 .price{
   font-size:18px;
-  margin:10px 0;
+  margin-bottom:12px;
 }
 
+/* BOTÕES */
 .btn{
   display:inline-block;
   background:#00ffcc;
   color:#000;
-  padding:8px 12px;
-  border-radius:5px;
+  padding:10px 15px;
+  border-radius:8px;
   text-decoration:none;
   font-weight:bold;
+  transition:0.3s;
 }
 
-/* TRANSIÇÃO SUAVE ENTRE SESSÕES */
-.section{
-  margin-top:40px;
-  padding-top:20px;
-  border-top:1px solid rgba(255,255,255,0.1);
-  animation:fadeSlide 0.8s ease;
+.btn:hover{
+  background:#00e6b8;
+  transform:scale(1.05);
 }
 
-@keyframes fadeSlide{
-  from{
-    opacity:0;
-    transform:translateY(40px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* TITULOS */
-.section-title{
+/* CTA PRINCIPAL */
+.cta{
+  margin-top:25px;
   text-align:center;
-  margin-bottom:20px;
+}
+
+.cta a{
+  display:inline-block;
+  padding:12px 22px;
+  background:linear-gradient(90deg,#00ffc2,#00bcd4);
+  color:#000;
+  border-radius:50px;
+  font-weight:bold;
+  text-decoration:none;
+  margin:5px;
+  box-shadow:0 5px 15px rgba(0,255,204,0.3);
+  transition:0.3s;
+}
+
+.cta a:hover{
+  transform:scale(1.05);
+  box-shadow:0 8px 20px rgba(0,255,204,0.5);
+}
+
+/* OCULTO INICIALMENTE */
+#diamantes{
+  display:none;
+  opacity:0;
+  transition:opacity 0.8s ease-in-out;
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  margin-top:40px;
+  padding:20px 0;
+  background:#111;
   color:#00ffcc;
+  border-top:1px solid #00ffcc;
+  font-size:14px;
 }
 
 </style>
@@ -182,24 +153,15 @@ body{
 
 <body>
 
-<!-- HEADER -->
-<div class="header-fixed">
+<div class="header">
   <h1>🛍️ GARENA SHOPPING</h1>
-</div>
-
-<!-- FUNDO -->
-<div class="lines">
-  <div class="line"></div>
-  <div class="line"></div>
-  <div class="line"></div>
 </div>
 
 <div class="container">
 
-<!-- 🔥 PASSES DESTACADOS -->
-<h2 class="section-title">🔥 Ofertas Especiais</h2>
+<!-- 🔥 PASSES -->
+<h2>🔥 Ofertas Especiais</h2>
 <div class="grid">
-
   <div class="card passe">
     <div class="title">Passe 700💎</div>
     <div class="price">169 MT</div>
@@ -211,57 +173,47 @@ body{
     <div class="price">400 MT</div>
     <a class="btn" href="https://wa.me/258856011586?text=Quero+Passe+1500">Comprar</a>
   </div>
+</div>
 
+<!-- CTA -->
+<div class="cta">
+  <a href="#" id="showDiamantes">Ver todos Diamantes</a>
+  <a href="contas.html">Ver Contas</a>
 </div>
 
 <!-- 💎 DIAMANTES NORMAIS -->
-<div class="section">
-
-<h2 class="section-title">💎 Diamantes</h2>
-
-<div class="grid">
-
-  <div class="card"><div class="title">170💎</div><div class="price">85 MT</div><a class="btn" href="https://wa.me/258856011586?text=170">Comprar</a></div>
-  <div class="card"><div class="title">288💎</div><div class="price">145 MT</div><a class="btn" href="https://wa.me/258856011586?text=288">Comprar</a></div>
-  <div class="card"><div class="title">392💎</div><div class="price">230 MT</div><a class="btn" href="https://wa.me/258856011586?text=392">Comprar</a></div>
-  <div class="card"><div class="title">497💎</div><div class="price">340 MT</div><a class="btn" href="https://wa.me/258856011586?text=497">Comprar</a></div>
-  <div class="card"><div class="title">589💎</div><div class="price">410 MT</div><a class="btn" href="https://wa.me/258856011586?text=589">Comprar</a></div>
-  <div class="card"><div class="title">693💎</div><div class="price">440 MT</div><a class="btn" href="https://wa.me/258856011586?text=693">Comprar</a></div>
-  <div class="card"><div class="title">814💎</div><div class="price">560 MT</div><a class="btn" href="https://wa.me/258856011586?text=814">Comprar</a></div>
-  <div class="card"><div class="title">1188💎</div><div class="price">810 MT</div><a class="btn" href="https://wa.me/258856011586?text=1188">Comprar</a></div>
-  <div class="card"><div class="title">2121💎</div><div class="price">1080 MT</div><a class="btn" href="https://wa.me/258856011586?text=2121">Comprar</a></div>
-  <div class="card"><div class="title">2480💎</div><div class="price">1480 MT</div><a class="btn" href="https://wa.me/258856011586?text=2480">Comprar</a></div>
-  <div class="card"><div class="title">2890💎</div><div class="price">1840 MT</div><a class="btn" href="https://wa.me/258856011586?text=2890">Comprar</a></div>
-  <div class="card"><div class="title">4888💎</div><div class="price">2200 MT</div><a class="btn" href="https://wa.me/258856011586?text=4888">Comprar</a></div>
-
-</div>
-
-</div>
-
-<!-- 🎮 CONTAS -->
-<div class="section">
-
-<h2 class="section-title">🎮 Sessão de Contas</h2>
-
-
-<div class="grid-contas">
-
-  <div class="card"><img src="250.jpg"><div class="title">Conta Básica</div><div class="price">250 MT</div><a class="btn" href="https://wa.me/258856011586">Comprar</a></div>
-  <div class="card"><img src="699.jpg"><div class="title">Conta Média</div><div class="price">699 MT</div><a class="btn" href="https://wa.me/258856011586">Comprar</a></div>
-  <div class="card"><img src="130.jpg"><div class="title">Conta Premium</div><div class="price">130 MT</div><a class="btn" href="https://wa.me/258856011586">Comprar</a></div>
-  <div class="card"><img src="199.jpg"><div class="title">Conta Premium</div><div class="price">199 MT</div><a class="btn" href="https://wa.me/258856011586">Comprar</a></div>
-  <div class="card"><img src="599.jpg"><div class="title">Conta Premium</div><div class="price">599 MT</div><a class="btn" href="https://wa.me/258856011586">Comprar</a></div>
-
-</div>
-
-</div>
-
+<div id="diamantes">
+  <h2 style="margin-top:30px;">💎 Diamantes</h2>
+  <div class="grid-normal">
+    <div class="card"><div class="title">170💎</div><div class="price">85 MT</div><a class="btn" href="https://wa.me/258856011586?text=Quero+170+Diamantes">Comprar</a></div>
+    <div class="card"><div class="title">288💎</div><div class="price">145 MT</div><a class="btn" href="https://wa.me/258856011586?text=Quero+288+Diamantes">Comprar</a></div>
+    <div class="card"><div class="title">392💎</div><div class="price">230 MT</div><a class="btn" href="https://wa.me/258856011586?text=Quero+392+Diamantes">Comprar</a></div>
+    <div class="card"><div class="title">497💎</div><div class="price">340 MT</div><a class="btn" href="https://wa.me/258856011586?text=Quero+497+Diamantes">Comprar</a></div>
+    <div class="card"><div class="title">589💎</div><div class="price">410 MT</div><a class="btn" href="https://wa.me/258856011586?text=Quero+589+Diamantes">Comprar</a></div>
+    <div class="card"><div class="title">693💎</div><div class="price">440 MT</div><a class="btn" href="https://wa.me/258856011586?text=Quero+693+Diamantes">Comprar</a></div>
+    <div class="card"><div class="title">814💎</div><div class="price">560 MT</div><a class="btn" href="https://wa.me/258856011586?text=Quero+814+Diamantes">Comprar</a></div>
+    <div class="card"><div class="title">1188💎</div><div class="price">810 MT</div><a class="btn" href="https://wa.me/258856011586?text=Quero+1188+Diamantes">Comprar</a></div>
+    <div class="card"><div class="title">2121💎</div><div class="price">1080 MT</div><a class="btn" href="https://wa.me/258856011586?text=Quero+2121+Diamantes">Comprar</a></div>
+    <div class="card"><div class="title">2480💎</div><div class="price">1480 MT</div><a class="btn" href="https://wa.me/258856011586?text=Quero+2480+Diamantes">Comprar</a></div>
+    <div class="card"><div class="title">2890💎</div><div class="price">1840 MT</div><a class="btn" href="https://wa.me/258856011586?text=Quero+2890+Diamantes">Comprar</a></div>
+    <div class="card"><div class="title">4888💎</div><div class="price">2200 MT</div><a class="btn" href="https://wa.me/258856011586?text=Quero+4888+Diamantes">Comprar</a></div>
+  </div>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-  © 2026 GARENA SHOPPING - Todos direitos reservados
+  &copy; 2026 Garena Shopping - Todos os direitos reservados
 </div>
+
+<script>
+document.getElementById('showDiamantes').addEventListener('click', function(e){
+  e.preventDefault();
+  const diamantes = document.getElementById('diamantes');
+  diamantes.style.display = 'grid';
+  setTimeout(()=>{diamantes.style.opacity = '1'},50);
+  diamantes.scrollIntoView({behavior:'smooth'});
+});
+</script>
 
 </body>
 </html>
